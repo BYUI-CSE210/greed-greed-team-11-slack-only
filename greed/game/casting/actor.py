@@ -100,13 +100,13 @@ class Actor:
         """
         self._font_size = font_size
     
-    def set_text(self, text):
-        """Updates the text to the given value.
+    def set_shape(self, shape):
+        """Updates the shape to the given value.
         
         Args:
-            text (string): The given value.
+            shape (string): The given shape.
         """
-        self._text = text
+        self._shape = shape
 
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.
