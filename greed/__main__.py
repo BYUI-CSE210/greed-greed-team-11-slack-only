@@ -2,6 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
+from game.casting.artifact import Artifact
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -17,11 +18,12 @@ FRAME_RATE = 12
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
-FONT_SIZE = 15
+FONT_SIZE = 45
 COLS = 60
 ROWS = 40
-CAPTION = "Change this text"
+CAPTION = "GREED"
 WHITE = Color(255, 255, 255)
+DEFAULT_ARTIFACTS = 100
 
 
 def main():
@@ -37,6 +39,18 @@ def main():
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)
 
+    # create the robot
+    x = int(MAX_X / 2)
+    y = int(MAX_Y / 2)
+    position = Point(x, y)
+
+    robot = Actor()
+    robot.set_text("|")
+    robot.set_font_size(FONT_SIZE)
+    robot.set_color(WHITE)
+    robot.set_position(position)
+    cast.add_actor("robots", robot)
+
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
     video_service = VideoService(
@@ -44,6 +58,34 @@ def main():
     director = Director(keyboard_service, video_service)
     director.start_game(cast)
 
+    # create the artifacts
+    for n in range(DEFAULT_ARTIFACTS):
+        shape = random.choice(['*','o'])
+        message = ''
+        if shape == '*':
+            message = '1 point'
+        else:
+            message = '-1 point'
+
+
+        x = random.randint(1, COLS - 1)
+        y = random. randint(35, ROWS - 1)
+
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = Color(r, g, b)
+
+        artifact = Artifact()
+        artifact.set_shape(shape)
+        artifact.set_font_size(FONT_SIZE)
+        artifact.set_color(color)
+        artifact.set_position(position)
+        artifact.set_message(message)
+        cast.add_actor("artifacts", artifact)
 
 if __name__ == "__main__":
     main()
