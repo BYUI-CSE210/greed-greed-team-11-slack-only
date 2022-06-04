@@ -7,7 +7,6 @@ class Actor:
     
     The responsibility of Actor is to keep track of its appearance, position and velocity in 2d 
     space.
-
     Attributes:
         _text (string): The text to display
         _font_size (int): The font size to use.
@@ -100,13 +99,13 @@ class Actor:
         """
         self._font_size = font_size
     
-    def set_shape(self, shape):
-        """Updates the shape to the given value.
+    def set_text(self, text):
+        """Updates the text to the given value.
         
         Args:
-            shape (string): The given shape.
+            text (string): The given value.
         """
-        self._shape = shape
+        self._text = text
 
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.
