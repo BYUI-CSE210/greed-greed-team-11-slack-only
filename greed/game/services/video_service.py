@@ -34,7 +34,6 @@ class VideoService:
     
     def draw_actor(self, actor):
         """Draws the given actor's text on the screen.
-
         Args:
             actor (Actor): The actor to draw.
         """ 
@@ -47,7 +46,6 @@ class VideoService:
         
     def draw_actors(self, actors):
         """Draws the text for the given list of actors on the screen.
-
         Args:
             actors (list): A list of actors to draw.
         """ 
@@ -86,7 +84,6 @@ class VideoService:
 
     def is_window_open(self):
         """Whether or not the window was closed by the user.
-
         Returns:
             bool: True if the window is closing; false if otherwise.
         """
@@ -94,7 +91,6 @@ class VideoService:
 
     def open_window(self):
         """Opens a new window with the provided title.
-
         Args:
             title (string): The title of the window.
         """
