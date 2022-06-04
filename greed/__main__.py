@@ -69,7 +69,7 @@ def main():
 
 
         x = random.randint(1, COLS - 1)
-        y = random. randint(35, ROWS - 1)
+        y = random. randint(1, ROWS - 1)
 
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
