@@ -24,6 +24,7 @@ ROWS = 40
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
 RED = Color(255, 0, 0)
+YELLOW = Color(139,139,0)
 
 def main():
     
@@ -33,13 +34,13 @@ def main():
     x = int(MAX_X / 2)
     y = int(570)
     position = Point(x, y) 
-    #create the banner
-    banner = Actor()
-    banner.set_text("@")
-    banner.set_font_size(FONT_SIZE)
-    banner.set_color(RED)
-    banner.set_position(position)
-    cast.add_actor("banner", banner)
+    #create the player
+    user = Actor()
+    user.set_text("@")
+    user.set_font_size(FONT_SIZE)
+    user.set_color(YELLOW)
+    user.set_position(position)
+    cast.add_actor("user", user)
     # create intial score
     score = Score()
     score.set_position(Point(MAX_X // 2, 15))
