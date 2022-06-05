@@ -4,6 +4,12 @@ import pyray
 class VideoService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state 
     on the screen. 
+        _caption = Screen caption
+        _width = Screen width
+        _height = Screen height
+        _cell_size = Screen cell size
+        _frame_rate = Screen frame rate
+        _debug = (bool): whether or not to draw in debug mode.
     """
 
     def __init__(self, caption, width, height, cell_size, frame_rate, debug = False):
