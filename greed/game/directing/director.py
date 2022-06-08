@@ -6,6 +6,8 @@ from game.shared.color import Color
 # from game.casting.cast import Cast
 
 WHITE = Color(255, 255, 255)
+GREEN = Color(0, 255, 0)
+RED = Color(255, 0, 0)
 
 class Director:
     """A person who directs the game. 
@@ -58,12 +60,18 @@ class Director:
             cast (Cast): The cast of actors.
         """
         # create rocks, gems at top of screen (random x, set y)(random number of stones)
+
+        # random color range
+        r_main = r.randint(160, 225)
+        r_sub1 = r.randint(1,150)
+        r_sub2 = r.randint(1,150)
+
         gem = Stone()
         gem.set_text("*")
         gem.set_points(1)
         gem.set_velocity(Point(0,5))
         gem.set_position(Point(r.randint(15, 885),15))
-        green = Color(0, 255, 0)
+        green = Color(r_sub1, r_main, r_sub2)
         gem.set_color(green)
 
         rock = Stone()
@@ -71,7 +79,7 @@ class Director:
         rock.set_points(-1)
         rock.set_velocity(Point(0,5))
         rock.set_position(Point(r.randint(15, 885),15))
-        blue = Color(0,0,255)
+        blue = Color(r_sub1,r_sub2,r_main)
         rock.set_color(blue)
 
         cast.add_actor("stones", gem)
@@ -103,9 +111,7 @@ class Director:
                     score.add_points(-1)
                 if actor_y > max_y - 30 or ((user_x - 10 < actor_x < user_x + 10) and (user_y - 10 < actor_y < user_y + 10)):
                     cast.remove_actor("stones", actor)
-                    
-                    
-            
+
         # move player
         user.move_next(max_x, max_y)
 
@@ -121,6 +127,24 @@ class Director:
         user = cast.get_first_actor("user")
         score = cast.get_first_actor("score")
         score.set_text(f"SCORE: {score.get_points()}")
+        # Set score color: green if 0 and above; red if negative
+        if score.get_points() >= 0:
+            score.set_color(GREEN)
+        else:
+            score.set_color(RED)
+
+        # Set score milestones text:
+        if score.get_points() >= 5 and score.get_points() <=10:
+            score.set_text(f"SCORE: {score.get_points()} : You're on a roll!")
+        elif score.get_points() >= 11 and score.get_points() <=15:
+            score.set_text(f"SCORE: {score.get_points()} : Can you reach 30?")
+        elif score.get_points() >= 31 and score.get_points() <=40:
+            score.set_text(f"SCORE: {score.get_points()} : Amazing reflexes!")
+        elif score.get_points() >= 48 and score.get_points() <=50:
+            score.set_text(f"SCORE: {score.get_points()} : Nothing's stopping you now!")
+        elif score.get_points() <= -5 and score.get_points() <= -8:
+            score.set_text(f"SCORE: {score.get_points()} : Pick up the pace.")
+
         for actor in cast.get_actors("stones"):
             self._video_service.draw_actor(actor)
         self._video_service.draw_actor(user)
