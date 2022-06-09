@@ -24,7 +24,6 @@ ROWS = 40
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
 RED = Color(255, 0, 0)
-YELLOW = Color(139,139,0)
 
 def main():
     
@@ -38,7 +37,7 @@ def main():
     user = Actor()
     user.set_text("@")
     user.set_font_size(FONT_SIZE)
-    user.set_color(YELLOW)
+    user.set_color(WHITE)
     user.set_position(position)
     cast.add_actor("user", user)
     # create intial score
