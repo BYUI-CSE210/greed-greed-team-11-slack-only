@@ -23,6 +23,7 @@ COLS = 60
 ROWS = 40
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
+GREEN = Color(0, 255, 0)
 RED = Color(255, 0, 0)
 
 def main():
@@ -40,10 +41,10 @@ def main():
     user.set_color(WHITE)
     user.set_position(position)
     cast.add_actor("user", user)
-    # create intial score
+    # create initial score
     score = Score()
-    score.set_position(Point(MAX_X // 2, 15))
-    score.set_color(RED)
+    score.set_position(Point(MAX_X // 3, 15))
+    score.set_color(GREEN)
     cast.add_actor("score", score)
 
     # start the game
